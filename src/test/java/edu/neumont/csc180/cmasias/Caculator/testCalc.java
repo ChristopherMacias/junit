@@ -1,4 +1,4 @@
-package edu.neumont.csc180.cmasias;
+package edu.neumont.csc180.cmasias.Caculator;
 import org.junit.jupiter.api.*;
 import org.junit.platform.suite.api.SelectPackages;
 import org.junit.platform.suite.api.Suite;
@@ -6,7 +6,7 @@ import org.junit.platform.suite.api.Suite;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 
-public class Calc {
+public class testCalc {
 
     @BeforeAll
     static void setup(){
@@ -21,7 +21,7 @@ public class Calc {
     @Test
     void testCalcOne(){
         System.out.println("======TEST ONE EXECUTED=======");
-        Assertions.assertEquals(4,Calculator.add(2,2));
+        Assertions.assertEquals(4,testCalculator.add(2,2));
     }
     @Tag("PROD")
     @Disabled
@@ -29,7 +29,7 @@ public class Calc {
     void testCalcTwo()
     {
         System.out.println("======TEST TWO EXECUTED=======");
-        Assertions.assertEquals( 6 , Calculator.add(2, 4));
+        Assertions.assertEquals( 6 , testCalculator.add(2, 4));
     }
 
     @Test
@@ -37,12 +37,12 @@ public class Calc {
         assumingThat("DEV".equals(System.getenv("ENV")),
                 () -> {
                     // perform these assertions only on the DEV server
-                    Assertions.assertEquals(2, Calculator.divide(4, 2));
+                    Assertions.assertEquals(2, testCalculator.divide(4, 2));
                 });
 
         // perform these assertions in all environments
-        Assertions.assertEquals(42, Calculator.multiply(6, 7));
-        Assertions.assertEquals(1, Calculator.sub(7, 6));
+        Assertions.assertEquals(42, testCalculator.multiply(6, 7));
+        Assertions.assertEquals(1, testCalculator.sub(7, 6));
     }
     @AfterEach
     void tearThis(){
@@ -58,24 +58,24 @@ public class Calc {
     }
 
     @Suite
-    @SelectPackages("edu.neumont.csc180.cmasias")
+    @SelectPackages("edu.neumont.csc180.cmasias.Calculator")
 
     public class JUnit5TestSuiteExample {
     }
     void testCase()
     {
         //Test will pass
-        Assertions.assertNotEquals(3, Calculator.add(2, 2));
+        Assertions.assertNotEquals(3, testCalculator.add(2, 2));
 
         //Test will fail
-        Assertions.assertNotEquals(4, Calculator.add(2, 2), "Calculator.add(2, 2) test failed");
+        Assertions.assertNotEquals(4, testCalculator.add(2, 2), "Calculator.add(2, 2) test failed");
 
     }
     @Test
     void testOnDev()
     {
         System.setProperty("ENV", "DEV");
-        Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")), Calc::message);
+        Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")), testCalculator::message);
     }
 
     @Test
