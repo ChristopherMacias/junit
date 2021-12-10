@@ -39,6 +39,7 @@ public class Calc {
         System.out.println(multiNum(randomNumberMax(),randomNumberMin()));
         System.out.println(addNum(randomNumberMax(),randomNumberMin()));
         System.out.println(subNum(randomNumberMax(),randomNumberMin()));
+        System.out.println("calc");
 
     }
 }
