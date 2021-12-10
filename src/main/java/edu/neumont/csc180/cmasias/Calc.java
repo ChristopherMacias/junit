@@ -85,8 +85,10 @@ public class Calc {
         Assumptions.assumeFalse("DEV".equals(System.getProperty("ENV")));
     }
 
+
     private static String message () {
         return "TEST Execution Failed :: ";
     }
+
 
 }
